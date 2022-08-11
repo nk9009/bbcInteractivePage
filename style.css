@@ -21,7 +21,7 @@ img {
 	padding: 0 1rem; /*html 태그의 default font size는 안 건드렸으므로 16px이기 때문에 1rem하면 16px */
 }
 /*스크롤을 내리다보면 이미지가 위에 딱 고정되는 것은 position:sticky;를 쓰면 된다.*/
-/* 이미지를 통째로 그룹화하고 있는 클래스는 .scroll-graphic이다. 얘한테 sticky를 쓰면 된다.*/
+/*이미지를 통째로 그룹화하고 있는 클래스는 .scroll-graphic이다. 얘한테 sticky를 쓰면 된다.*/
 .scroll-graphic {
 	position: sticky;
 	top: 0; /*sticky가 적용된 위치가 top에 지정한 위치가 되면 그때부터 안 올라가고 붙어있음.*/
@@ -30,9 +30,9 @@ img {
 	/* can I use 찾아보면 stick는 IE(인터넷익스플로러)11에도 지원하지 않는다. */
 	/* sticky 대신 fixed를 이용해서 js로 계산을 해서 사용할 순 있다. */
 	/* fixed에 고정했다가 나중에 static으로 풀어주고 복잡한 처리... 1분코딩의 애플 강의에 있음. */
-}
+} 
 /*스크롤 오르내릴 때 이미지의 투명도가 바뀌면서 다른 이미지로 바뀐다*/
-/*이유는 이미지가 겹쳐 있기 때문. 겹쳐 놓으려면 position:absoulte;로 겹쳐놓으면 된다. */
+/*★이유는 이미지가 겹쳐 있기 때문. 겹쳐 놓으려면 position:absoulte;로 겹쳐놓으면 된다. */
 /*각 이미지는 graphic-item에 감싸져 있다.*/
 .graphic-item {
 	display: flex; /*이미지를 화면에 꽉차게 하고 가운데 정렬하기 위해서 flex를 사용한다.*/
@@ -43,6 +43,11 @@ img {
 	right: 0;
 	width: 100%; /*vw 써도 된다. 이미지를 화면에 꽉차게 하고 가운데 정렬하기 위해서 flex를 사용한다.*/
 	height: 100%; /*vh 써도 된다. 이미지를 화면에 꽉차게 하고 가운데 정렬하기 위해서 flex를 사용한다.*/
+	opacity: 0; /*opacity가 0이 기본이고, .visible이면 opacity가 1이어서 보이도록 한다.*/
+	transition: 0.5s;
+}
+.visible {
+	opacity: 1; /*opacity가 0이 기본이고, .visible이면 opacity가 1이어서 보이도록 한다.*/
 }
 /*이미지 클래스는 .scene-img*/
 .scene-img {
@@ -51,13 +56,13 @@ img {
 
 /* 전체 말풍선은 scroll-text로 감싸져 있고, 각각의 말풍선은 step클래스로 감싸져 있다 */
 .scroll-text {
-	/* 일단 position relative를 써서 위로 올린다. */
+	/*★일단 position relative를 써서 위로 올린다. */
 	position: relative; 
 	/*position의 기본값은 static이다. 기본값이 아니면 z-index를 사용하면 좋다(?) */
 	/* 근데 밑에 쓰면 어차피 화면 위에 나오기 때문에 z-index를 안 써도 되긴 하지만 명시적으로 지정해줘도 된다. */
 	padding-bottom: 1px; 
-	/*상하단 margin 병합 현상때문에 넣음*/
-	/* .step 요소의 bottom margin이 마진병합 현상때문에 없어져 버려서 부모인 .scroll-text의 높이가 조금 모자라게 되는데요, 그걸 방지해주기 위해서 바닥에 1px의 padding을 넣어주었다. */
+	/*★상하단 margin 병합 현상때문에 넣음*/
+	/*★.step 요소의 bottom margin이 마진병합 현상때문에 없어져 버려서 부모인 .scroll-text의 높이가 조금 모자라게 되는데, 그걸 방지해주기 위해서 바닥에 1px의 padding을 넣어주었다. */
 }
 .step {
 	margin-bottom: 60vh; /*창 사이즈의 60퍼센트 높이*/
